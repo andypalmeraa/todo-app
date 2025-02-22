@@ -1,0 +1,32 @@
+TO DO APP- EXPLICACION 
+
+----que es jsx?
+----por que ya no se importa react desde react?
+
+-HTML- Punto de entrada: Tiene un div con id ID "root" 
+			y una etiqueta Script en donde se especifica que el source sera main.tsx
+
+-Main.tsx: es el componente desde donde vamos a inyectar nuestra aplicacion al HTML utilizando la etiqueta div con el ID "root"
+	   Solo en este componente tenemos la necesitad de importar "react" desde react.
+	  Aca se inyecta App el cual sera el componente padre de toda nuestra Aplicacion.
+	
+
+-App: Aca dentro se encuentra Header y TaskContainer
+
+	-Header: contiene el titulo de la app, mas la imagen y el icono al cual le aplicaremos la funcion del context para cxambiar el theeme.
+	- Task container: contiene en InputTask , el TaskList  y los tres botones para seleccionar que lista de tareas queremos visualizar
+		
+		-InputTask: es donde se escriben las nuevas tareas y hace el manejo de estado de las mismas.
+		-TaskList: es donde se muestra el listado de tareas y se manejan estados de las mismas como: determinar cuales estan completadas y borrar tareas.
+		Ademas renderiza el componente TaskDetails.
+		
+			-TasksDetails: 	muetsra la cantidad de tareas que quedan  y tiene un boton para borrar las completadas.
+
+
+VAMOS A CREAR UN CONTEXT:
+
+-Que componentes deberia envolver?  deberia estar en App ya que necesito setear el estado desde el header con el icono y acceder al estado 
+ tambien en el resto de la app
+
+- La carpeta Context se crea al mismo nivel de components, dentro de src
+ 

@@ -1,0 +1,5 @@
+TODO APP
+
+-corregir estilos (sun icon, checkbox, iluminacion de cada seccion, probar 
+-drag and drop to reorder list.Como hacer?
+-utilizar context para manipular theme
