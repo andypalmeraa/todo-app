@@ -20,13 +20,12 @@ const TasksContainer = (props:Props) => {
   const [task, setTask] = useState("");
   const [tasksList, setTasksList] = useState<Task[]>([]);
   const [activeTasksList, setActiveTasksList] = useState<Task[]>([]);
-  const [completedTasksList, setCompletedTasksList] = useState<Task[]>([]);
-  const [allListChosen, setAllListChosen] = useState<boolean>(true)
-  // const [activeListChosen, setActiveListChosen] = useState<boolean>(false)
-  // const [completedChosen, setCompletedChosen] = useState<boolean>(false)
+  const [completedTasksList, setCompletedTasksList] = useState<Task[]>([]); 
   const [filteredTasks, setFilteredTasks]= useState<Task[]>(tasksList);
   const [status, setStatus] = useState<string>('all')
-  const {theme, setTheme}= useContext(ThemeContext) as any
+  const {theme}= useContext(ThemeContext) as any
+
+  const textClass= `${theme === 'light' ? 'text-blue-selected':'text-very-light-grayish-blue'}`
 
   useEffect(() => {
     selectList(status)
@@ -85,8 +84,6 @@ const selectList= (list: string) => {
   const deleteCompleted = () => {
     const newTasksList = tasksList.filter((task) => task.done === false);
     setTasksList(newTasksList);
-    // setCompletedTasksList([])
-
   };
 
   const deleteTask = (id: number) => {
@@ -125,7 +122,7 @@ const selectList= (list: string) => {
   };
 
   return (
-    <div className={`${theme === 'light'? 'bg-very-light-gray': 'bg-very-dark-Blue'} h-screen`}>
+    <div className={`${theme === 'light'? 'bg-very-light-gray': 'bg-very-dark-Blue'} h-screen p-5`}>
       <InputTask
         handleInput={handleInput}
         task={task}
@@ -134,10 +131,10 @@ const selectList= (list: string) => {
       <TaskList {...propsTasksList} />
       {
         isMobile &&
-        <div className="flex justify-between bg-slate-800 p-4 relative -top-16 m-auto br rounded-lg text-slate-500 w-72 my-4">
-          <button className='' onClick={() => selectList('all')}>All</button>
-          <button className="" onClick={() => selectList('active')}>Active</button>
-          <button className="" onClick={() => selectList('completed')}>Completed</button>
+        <div className={`${theme === 'light' ? 'bg-white ':'bg-very-dark-desaturated-blue '}flex justify-evenly bg-slate-800 p-4 relative -top-16 w-full br rounded-lg text-slate-500 w-72 my-4 shadow-[0_3px_10px_rgb(0,0,0,0.2)]`}>
+          <button className={`${status == 'all' && textClass}`} onClick={() => selectList('all')}>All</button>
+          <button className={`${status === 'active' && textClass}`} onClick={() => selectList('active')}>Active</button>
+          <button className={`${status === 'completed' && textClass}`} onClick={() => selectList('completed')}>Completed</button>
       </div>
       }
     </div>

@@ -30,23 +30,27 @@ const TaskList = (props: Props) => {
 
   return (
     <>
-        <ul className={`${theme === 'light' ? 'bg-white text-very-dark-grayish-blue':''}flex flex-col gap-4  p-4 relative -top-24 m-auto br rounded-lg  max-w-xl shadow-[0_3px_10px_rgb(0,0,0,0.2)]`}>
+        <ul className={`${theme === 'light' ? 'bg-white ':'bg-very-dark-desaturated-blue '}text-very-dark-grayish-blue flex flex-col gap-4  p-4 relative -top-24 m-auto br rounded-lg  max-w-xl shadow-[0_3px_10px_rgb(0,0,0,0.2)]`}>
           {tasksList.length ? tasksList.map((task: Task) => {
             return (
               <div key={task.id}>
-              <li className="flex justify-between p-2.5" >
+              <li className={`flex justify-between p-2.5 `} >
+
                 <div className="flex gap-4">
-                  <div
-                  // no funciona la gradiente 
-                    className={`${theme === 'light' ? 'border-very-light-grayish-blue': ''} flex justify-center items-center w-6 h-6 rounded-full border border-solid  bg-gradient-to-r from-cyan-500 to-blue-500 ${task.done && 'bg-gradient-to-r from-cyan-500 to-blue-500'}`}
-                    onClick={() => {
-                      handleDone(task.id);
-                    }}
-                  >
-                    {task.done && <img src={checkIcon} alt="check" />}
-                  </div>
-                  <span className={task.done ? 'line-through': ''}>{task.description}</span>
-                </div>
+                <div
+                className={`${theme === 'light' ? 'border-very-light-grayish-blue': ''} flex justify-center items-center w-6 h-6 rounded-full border border-solid `}
+                style={task.done ? { backgroundImage: 'linear-gradient(to right, rgb(132 96 155), rgb(33, 150, 243)' } : {}}           
+                onClick={() => handleDone(task.id)}
+              >
+                    {task.done && <img src={checkIcon} alt="check" className="w-80"/>}
+              </div>
+              <span
+              className={` ${task.done ? 'line-through' : ''} 
+               ${theme === 'dark' ? (task.done ? 'text-very-dark-grayish-blue' : 'text-very-light-grayish-blue') : (task.done ? 'text-very-light-grayish-blue' : 'text-very-dark-grayish-blue')}`}
+              >
+                {task.description}
+              </span>                
+              </div>
 
                 <button
                   onClick={() => {

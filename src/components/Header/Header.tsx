@@ -1,4 +1,4 @@
-import { useBackgroundImage } from '../../hooks/usebackgroundImage'
+import { useBackgroundImage } from '../../hooks/useBackgroundImage'
 import SunIcon from '../../assets/images/icon-sun.svg'
 import MoonIcon from '../../assets/images/icon-moon.svg'
 
