@@ -4,9 +4,13 @@ export const ThemeContext = React.createContext({})
 
 export default function ThemeContextProvider({children}:any) {
     const [theme,setTheme]= useState('light')
-return (
-    <ThemeContext.Provider value={{theme, setTheme}}>
-        {children}
-    </ThemeContext.Provider>
-)
+
+    const handleTheme = () => {
+        setTheme(theme === "dark" ? "light" : "dark");
+    };
+    return (
+        <ThemeContext.Provider value={{theme, handleTheme}}>
+            {children}
+        </ThemeContext.Provider>
+    )
 }

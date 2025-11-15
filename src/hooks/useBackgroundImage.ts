@@ -7,7 +7,7 @@ import DesktopDarkBackground from '../assets/images/bg-desktop-dark.jpg'
 
 
 export function useBackgroundImage (isMobile: Boolean){
-    const {theme, setTheme}= useContext(ThemeContext) as any
+    const {theme}= useContext(ThemeContext) as any
 
  
     const getBackgroundImage=() => {
@@ -19,9 +19,7 @@ export function useBackgroundImage (isMobile: Boolean){
       }
 
 
-    const handleTheme = () => {
-        setTheme(theme === "dark" ? "light" : "dark");
-      };
-      return {theme, handleTheme, getBackgroundImage}
+
+      return {getBackgroundImage}
 
 }

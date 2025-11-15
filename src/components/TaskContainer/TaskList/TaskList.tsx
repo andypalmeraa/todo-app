@@ -5,6 +5,7 @@ import { TasksDetails } from "../TasksDetails/TasksDetails";
 import { useContext } from "react";
 import { ThemeContext } from "../../../context/ThemeContext";
 
+
 interface Props {
   status: String;
   isMobile: Boolean;
@@ -15,11 +16,10 @@ interface Props {
   deleteCompleted: () => void;
   leftItems: number;
 }
-
 const TaskList = (props: Props) => {
-  const { status, isMobile, tasksList, selectList, handleDone, deleteTask, deleteCompleted, leftItems } = props;
+  const {isMobile, status, tasksList, selectList, handleDone, deleteTask, deleteCompleted}= props
   const {theme}= useContext(ThemeContext) as any
-
+  const leftItems= tasksList.filter((task:Task) => task.done === false).length
   const taskDetailsProps= {
     status,
     itemsLeftNumber:leftItems,

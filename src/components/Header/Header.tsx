@@ -1,6 +1,8 @@
 import { useBackgroundImage } from '../../hooks/useBackgroundImage'
 import SunIcon from '../../assets/images/icon-sun.svg'
 import MoonIcon from '../../assets/images/icon-moon.svg'
+import { useContext } from 'react'
+import { ThemeContext } from '../../context/ThemeContext'
 
 interface Props {
   isMobile: Boolean
@@ -8,7 +10,8 @@ interface Props {
 
 const Header = (props: Props) => {
 const {isMobile}= props
-const { theme, handleTheme, getBackgroundImage} = useBackgroundImage(isMobile)
+const { getBackgroundImage} = useBackgroundImage(isMobile)
+const {theme, handleTheme} = useContext(ThemeContext) as any
 
   return (
     <div 
